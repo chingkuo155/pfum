@@ -9,3 +9,11 @@ class UserBase(BaseModel):
     gender: str
     country: str
     isActive: bool
+
+class UserCreate(UserBase):
+    password: str
+
+class User(UserBase):
+    id: int
+    class Config:
+        from_attributes = True
