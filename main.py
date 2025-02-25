@@ -49,3 +49,10 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     return crudsd.create_user(db=db, user=user)
+
+@app.put("/users/", response_model=schemas.User)
+def update_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    db_user = crudsd.get_user_by_email(db, email=user.email)
+    if db_user:
+        return crudsd.update_user(db=db, user=user)
+    raise HTTPException(status_code=400, detail="User not Found")
