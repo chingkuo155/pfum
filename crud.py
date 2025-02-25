@@ -34,3 +34,9 @@ def update_user(db: Session, user: schemas.UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+def delete_user(db: Session, user_id: int):
+    record_obj = db.query(models.User).filter(models.User.id == user_id).first()
+    db.delete(record_obj)
+    db.commit()
+    return record_obj
