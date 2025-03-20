@@ -1,0 +1,13 @@
+# 忽略 Python 虛擬環境
+pfum/
+venv/
+.env
+
+# 忽略編譯的 Python 文件
+__pycache__/
+*.pyc
+*.pyo
+
+# 忽略資料庫檔案
+*.db
+*.sqlite3
